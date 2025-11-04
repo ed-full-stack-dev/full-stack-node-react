@@ -9,6 +9,23 @@ app.get("/api/health", (_req, res) => {
   res.json({ ok: true, service: "server", ts: new Date().toISOString() });
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`API listening on http://localhost:${PORT}`);
+});
+
+// Graceful shutdown handling
+process.on("SIGINT", () => {
+  console.log("\nShutting down gracefully...");
+  server.close(() => {
+    console.log("Server closed");
+    process.exit(0);
+  });
+});
+
+process.on("SIGTERM", () => {
+  console.log("\nShutting down gracefully...");
+  server.close(() => {
+    console.log("Server closed");
+    process.exit(0);
+  });
 });
