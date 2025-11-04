@@ -2,7 +2,9 @@
   "name": "full-stack-node-react",
   "version": "1.0.0",
   "description": "Full stack repository using node js for the backend and react for the front end. Collection of created features as practical examples.",
-  "workspaces": ["apps/*"],
+  "workspaces": [
+    "apps/*"
+  ],
   "scripts": {
     "dev": "npm run dev -w apps/server & npm run dev -w apps/web",
     "build": "npm run build -w apps/server && npm run build -w apps/web",
@@ -18,5 +20,11 @@
   "bugs": {
     "url": "https://github.com/ed-full-stack-dev/full-stack-node-react/issues"
   },
-  "homepage": "https://github.com/ed-full-stack-dev/full-stack-node-react#readme"
+  "homepage": "https://github.com/ed-full-stack-dev/full-stack-node-react#readme",
+  "dependencies": {
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19"
+  }
 }
