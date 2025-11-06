@@ -55,7 +55,6 @@
   --transition-normal: 300ms;
   --transition-slow: 500ms;
 }
-
 /* Dark theme - Only override base colors */
 [data-theme="dark"] {
   --color-base: oklch(20% 0 0);                /* Dark background */
