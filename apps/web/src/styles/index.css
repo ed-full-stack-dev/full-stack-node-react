@@ -1,0 +1,65 @@
+:root {
+  /* Base theme variables */
+  --font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-size-base: 1em;
+  --line-height-base: 1.5;
+  
+  /* Base Colors using OKLCH - Perceptually uniform */
+  --color-primary: oklch(65% 0.15 250);        /* Main accent - blue-ish */
+  --color-base: oklch(100% 0 0);               /* Pure white */
+  --color-text-base: oklch(25% 0 0);           /* Dark gray */
+  
+  /* Derived Colors - Mix of color-mix() and relative colors */
+  
+  /* Accent variations using relative colors */
+  --color-accent: var(--color-primary);
+  --color-accent-hover: oklch(from var(--color-primary) calc(l - 0.1) c h);
+  --color-accent-light: oklch(from var(--color-primary) calc(l + 0.15) c h);
+  --color-accent-dark: oklch(from var(--color-primary) calc(l - 0.15) c h);
+  
+  /* Background variations using color-mix for tints */
+  --color-bg-primary: var(--color-base);
+  --color-bg-secondary: color-mix(in oklch, var(--color-base), var(--color-text-base) 5%);
+  --color-bg-tertiary: color-mix(in oklch, var(--color-base), var(--color-text-base) 10%);
+  
+  /* Text variations using relative colors */
+  --color-text-primary: var(--color-text-base);
+  --color-text-secondary: oklch(from var(--color-text-base) calc(l + 0.3) c h);
+  --color-text-muted: oklch(from var(--color-text-base) calc(l + 0.45) c h);
+  
+  /* Border - lighter version of text using relative colors */
+  --color-border: oklch(from var(--color-text-base) calc(l + 0.5) c h / 0.3);
+  
+  /* Or using color-mix for borders */
+  /* --color-border: color-mix(in oklch, var(--color-text-base), transparent 70%); */
+  
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
+  
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+  /* Transitions */
+  --transition-fast: 150ms;
+  --transition-normal: 300ms;
+  --transition-slow: 500ms;
+}
+/* Dark theme - Only override base colors */
+[data-theme="dark"] {
+  --color-base: oklch(20% 0 0);                /* Dark background */
+  --color-text-base: oklch(90% 0 0);            /* Light text */
+  
+  
+  /* Optional: Different accent for dark mode */
+  /* --color-primary: oklch(70% 0.15 250); */   /* Lighter accent */
+}
