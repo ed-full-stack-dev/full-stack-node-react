@@ -59,6 +59,7 @@
   --color-base: oklch(20% 0 0);                /* Dark background */
   --color-text-base: oklch(90% 0 0);            /* Light text */
   
+  
   /* Optional: Different accent for dark mode */
   /* --color-primary: oklch(70% 0.15 250); */   /* Lighter accent */
 }
