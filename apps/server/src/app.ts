@@ -2,7 +2,9 @@ import express from "express";
 import { ALLOWED_ORIGINS } from "./config/env";
 import cors from "cors";
 import Controller from "./types/controller";
+import {logger} from "./middleware/requestLogger";
 class App {
+  private logger = logger.createContextLogger('App')
   public app: express.Application;
   public port: number;
   constructor(port: number, controllers: Controller[]) {
@@ -26,6 +28,7 @@ class App {
     });
   }
   private initializeMiddleWare() {
+    this.app.use(logger.getHttpLogger())
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
   }
@@ -38,7 +41,7 @@ class App {
         if (!origin || ALLOWED_ORIGINS.includes(origin)) {
           callback(null, true);
         } else {
-          console.warn(`CORS blocked request from origin:${origin}`);
+          this.logger.warn(`CORS blocked request from origin:${origin}`);
           callback(null, false);
         }
       },
@@ -49,7 +52,7 @@ class App {
   }
   public listen():void {
     this.app.listen(this.port, () => {
-        console.log(`API listening on http://localhost:${this.port}`)
+        this.logger.info(`API listening on http://localhost:${this.port}`)
     })
   }
 }
