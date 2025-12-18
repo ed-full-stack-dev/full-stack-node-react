@@ -136,3 +136,10 @@ dist
 .pnp.*
 dist
 build
+
+
+# macOS
+.DS_Store
+
+# Prisma generated client
+apps/server/src/generated/prisma
